@@ -24,7 +24,7 @@ A cozy, aesthetic resource hub designed for students and learners to access cura
 
 ## 🚀 Live Demo
 
-🔗 Coming soon! (Will update after deploying on Netlify)
+🔗 [Visit Study Vibes Library](https://study-vibes-library.netlify.app)
 
 ---
 
@@ -35,8 +35,9 @@ I wanted to create something real, aesthetic, and helpful — something I would�
 
 ## 📸 Screenshots 
 
-![image](https://github.com/user-attachments/assets/bb98c7a2-05cb-4cd2-8bf2-4642197545cf)
 ![image](https://github.com/user-attachments/assets/19a4680f-0dbf-452e-bf79-b5efb0bf9524)
+![image](https://github.com/user-attachments/assets/79250b59-6de3-41b5-a1b6-79243fe2a98d)
+
 
 
 ---
