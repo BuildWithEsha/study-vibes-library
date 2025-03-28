@@ -18,7 +18,6 @@ function createModal(title, fields, callback) {
   
     container.appendChild(modal);
   
-    // Delay listener to avoid immediate closure
     setTimeout(() => {
       document.addEventListener('click', outsideClickHandler);
     }, 0);
