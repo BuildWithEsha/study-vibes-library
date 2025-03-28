@@ -3,7 +3,7 @@ function createModal(title, fields, callback) {
     container.innerHTML = '';
   
     const modal = document.createElement('div');
-    modal.className = 'modal-box'; 
+    modal.className = 'modal-box';
   
     modal.innerHTML = `
       <div class="task-header">${title}</div>
@@ -18,14 +18,39 @@ function createModal(title, fields, callback) {
   
     container.appendChild(modal);
   
+    // Delay listener to avoid immediate closure
+    setTimeout(() => {
+      document.addEventListener('click', outsideClickHandler);
+    }, 0);
+  
     document.getElementById('modal-submit').onclick = function () {
       const values = {};
       for (const field of fields) {
         values[field.name] = document.getElementById(`modal-${field.name}`).value.trim();
       }
       container.innerHTML = '';
+      document.removeEventListener('click', outsideClickHandler);
       callback(values);
     };
+  }
+  
+  function outsideClickHandler(e) {
+    const taskBox = document.querySelector('.task-box');
+    const modal = document.querySelector('.modal-box');
+  
+    const clickedInsideTaskBox = taskBox && taskBox.contains(e.target);
+    const clickedInsideModal = modal && modal.contains(e.target);
+    const clickedButton = e.target.classList.contains('bt') || e.target.closest('.bt');
+    const clickedAddTaskBtn = e.target.classList.contains('add-task-btn');
+  
+    if (taskBox && !clickedInsideTaskBox && !clickedInsideModal && !clickedButton) {
+      taskBox.remove();
+    }
+  
+    if (modal && !clickedInsideModal && !clickedAddTaskBtn && !clickedInsideTaskBox) {
+      modal.remove();
+      document.removeEventListener('click', outsideClickHandler);
+    }
   }
   
   function addNewButton() {
@@ -237,19 +262,6 @@ function createModal(title, fields, callback) {
     };
     reader.readAsText(file);
   }
-  
-  document.addEventListener('click', function (e) {
-    const taskBox = document.querySelector('.task-box');
-    const modal = document.querySelector('.modal-box');
-  
-    const clickedInsideTaskBox = taskBox && taskBox.contains(e.target);
-    const clickedInsideModal = modal && modal.contains(e.target);
-    const clickedButton = e.target.classList.contains('bt') || e.target.closest('.bt');
-  
-    if (taskBox && !clickedInsideTaskBox && !clickedInsideModal && !clickedButton) {
-      taskBox.remove();
-    }
-  });
   
   window.onload = function () {
     document.querySelectorAll('.add').forEach(btn => {
