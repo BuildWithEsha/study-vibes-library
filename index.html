@@ -25,22 +25,25 @@
       <main>
         <div class="buttons">
           <div class="button-row">
-            <a class="bt" href="#" onclick="showTaskBox('LOFI')"><i class="fas fa-paperclip"></i> Lofi</a>
-            <a class="bt" href="#" onclick="showTaskBox('POMODORO')"><i class="fas fa-paperclip"></i> POMODORO</a>
-            <a class="bt" href="#" onclick="showTaskBox('SOUNDS')"><i class="fas fa-paperclip"></i> SOUNDS</a>
-        </div>
+            <a class="bt" href="#" onclick="showTaskBox('LOFI')"> Lofi</a>
+            <a class="bt" href="#" onclick="showTaskBox('POMODORO')"> POMODORO</a>
+            <a class="bt" href="#" onclick="showTaskBox('SOUNDS')"> SOUNDS</a>
+          </div>
           <div class="button-row">
-            <a class="bt" href="#" onclick="showTaskBox('TOOLS')"><i class="fas fa-paperclip"></i> TOOLS</a>
-            <a class="bt" href="#" onclick="showTaskBox('TECHNIQUES')"><i class="fas fa-paperclip"></i> TECHNIQUES</a>
-            <a class="bt" href="#" onclick="showTaskBox('FAVORITES')"><i class="fas fa-paperclip"></i> FAVORITES</a>
-        </div>
-          <div class="add-button-container">
+            <a class="bt" href="#" onclick="showTaskBox('TOOLS')"> TOOLS</a>
+            <a class="bt" href="#" onclick="showTaskBox('TECHNIQUES')"> TECHNIQUES</a>
+            <a class="bt" href="#" onclick="showTaskBox('FAVORITES')"> FAVORITES</a>
+          </div>
+          <div class="button-row">
             <button class="add" onclick="addNewButton()">Add</button>
+            <button class="add" onclick="exportData()">Export</button>
+            <input type="file" id="importInput" accept=".json" onchange="importData(event)" style="display: none;">
+            <button class="add" onclick="document.getElementById('importInput').click()">Import</button>
           </div>
         </div>
-        
-          
-    </main>    
+      </main>
+    
+    <div id="modal-container"></div>      
     <script src="script.js"></script>
 </body>
 </html>
